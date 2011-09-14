@@ -1,0 +1,20 @@
+CREATE TABLE Payment (
+	 id				INT NOT NULL AUTO_INCREMENT
+	,label			VARCHAR(1024) NOT NULL
+	,date			TIMESTAMP NOT NULL DEFAULT NOW()
+	,value			DOUBLE NOT NULL
+	,PRIMARY KEY (id)
+) Engine=InnoDB;
+
+CREATE TABLE Tag (
+	 id				INT NOT NULL AUTO_INCREMENT
+	,label			VARCHAR(256) NOT NULL
+	,PRIMARY KEY (id)
+) Engine=InnoDB;
+
+CREATE TABLE Payment_Tag (
+	 Tag_id			INT NOT NULL
+	,Payment_id 		INT NOT NULL
+	,FOREIGN KEY (Tag_id) REFERENCES Tag(id)
+	,FOREIGN KEY (Payment_id) REFERENCES Payment(id)
+) Engine=InnoDB;
